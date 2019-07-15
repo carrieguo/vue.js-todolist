@@ -19,6 +19,30 @@ vue相对于react，使用起来会更简单，因为vuex, vue router都是官�
 webpack 用于打包前端资源, 前端资源有很多不同的类型 js, css, img, font 通过http请求加载，开发webapp时都是一整个js加载到浏览器端之后再把所有的内容渲染出来，很多时候都可以以js文件作为入口
 vscode 打开命令行 ctrl+`
 
+`目录结构`
+```
+vue project
+│   README.md
+│   file001.txt    
+│
+└───dist
+│     bundle.js
+│   
+└───node_modules
+|     
+|
+└───src
+    |   app.vue
+    │   index.js
+    └───assests
+        │   
+        └───images
+        │       a.jpg
+        │       b.jpg
+        └───styles
+        |       a.css
+```
+
 `初始化项目`
 ```sh
 npm init 
@@ -61,7 +85,10 @@ npm install css-loader vue-template-compiler
 `index.js 入口文件` 
 ```js
 import Vue from 'vue';
-inport App from './app.vue';
+import App from './app.vue';
+
+import './assests/styles/test.css';
+import './assests/image/bg.jpeg'
 
 const root = document.createElement('div');
 document.body.appendChild(root);
@@ -87,12 +114,38 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.vue$/,
+        test: /\.vue$/,
         loader: 'vue-loader'
+      },
+      //将css写入到HTML
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      将小于1024d的图片转为base64，减少http请求
+      {
+        test: /\.(gif|jpg|jpeg|png|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024，
+              name: '[name].[ext]'
+            }
+          }
+          ]
       }
     ]
   }
 }
+```
+
+`url-loader 依赖 file-loader`
+```sh 
+npm i style-loader url-loader file-loader
 ```
 
 `package.json`
