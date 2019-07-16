@@ -16,7 +16,7 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
-      //将css写入到HTML
+      //将css写入到HTML，或者写入到css文件里
       {
         test: /\.css$/,
         use: [
@@ -24,11 +24,12 @@ module.exports = {
           'css-loader'
         ]
       },
+      //css预处理器，使用模块化的方式写css代码
       //stylus-loader专门用来处理stylus文件，处理完成后变成css文件，交给css-loader.webpack的loader就是这样一级一级向上传递，每一层loader只处理自己关心的部分
       {
         test: /\.styl/,
         use: [
-          'style-loader',
+          'vue-style-loader',
           'css-loader',
           'stylus-loader'
         ]

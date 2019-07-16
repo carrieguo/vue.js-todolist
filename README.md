@@ -23,7 +23,9 @@ vscode 打开命令行 ctrl+`
 ```
 vue project
 │   README.md
-│   file001.txt    
+│   package.json
+|   package-lock.json   
+|   webpack.config.json 
 │
 └───dist
 │     bundle.js
@@ -34,6 +36,7 @@ vue project
 └───src
     |   app.vue
     │   index.js
+    |
     └───assests
         │   
         └───images
@@ -41,6 +44,7 @@ vue project
         │       b.jpg
         └───styles
         |       a.css
+        |       style.styl
 ```
 
 `初始化项目`
@@ -121,7 +125,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          'vue-style-loader',
           'css-loader'
         ]
       },
@@ -129,7 +133,7 @@ module.exports = {
       {
         test: /\.styl/,
         use: [
-          'style-loader',
+          'vue-style-loader',
           'css-loader',
           'stylus-loader'
         ]
@@ -152,7 +156,7 @@ module.exports = {
 }
 ```
 
-`url-loader 依赖 file-loader`
+`安装相应的loader, url-loader 依赖 file-loader`
 ```sh 
 npm i style-loader url-loader file-loader
 ```
