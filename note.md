@@ -104,7 +104,7 @@ const path = require('path');
 
 module.exports = {
   //入口， __dirname 是当前文件所在目录
-  entry: path.join(__dirname, 'src/index.js');
+  entry: path.join(__dirname, 'src/index.js'),
   //输出
   output: {
     filename: 'bundle.js',
@@ -125,7 +125,16 @@ module.exports = {
           'css-loader'
         ]
       },
-      将小于1024d的图片转为base64，减少http请求
+      //stylus-loader专门用来处理stylus文件，处理完成后变成css文件，交给css-loader.webpack的loader就是这样一级一级向上传递，每一层loader只处理自己关心的部分
+      {
+        test: /\.styl/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'stylus-loader'
+        ]
+      },
+      //将小于1024d的图片转为base64，减少http请求
       {
         test: /\.(gif|jpg|jpeg|png|svg)$/,
         use: [
@@ -161,3 +170,6 @@ npm run build
 ```
 
 webpack 帮我们 生成一个dist目录，里面生成 bundle.js，前端项目希望把一些零碎的js打包到一起，减少http请求。使用模块依赖，可复用。
+
+webpack 配置中需要添加 Vue Loader 的插件
+参考 https://vue-loader.vuejs.org/zh/guide/#vue-cli

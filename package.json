@@ -1,0 +1,30 @@
+{
+  "name": "vue.js-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carrieguo/vue.js-learn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carrieguo/vue.js-learn/issues"
+  },
+  "homepage": "https://github.com/carrieguo/vue.js-learn#readme",
+  "dependencies": {
+    "css-loader": "^3.0.0",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.35.3"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.6"
+  }
+}
