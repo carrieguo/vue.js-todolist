@@ -9,7 +9,7 @@
   export default {
     data() {
       return {
-        text: 'abc'
+        text: 'lggggo'
       }
     }
   }

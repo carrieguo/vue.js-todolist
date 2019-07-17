@@ -107,6 +107,7 @@ new Vue({
 const path = require('path');
 
 module.exports = {
+  target: 'web',
   //入口， __dirname 是当前文件所在目录
   entry: path.join(__dirname, 'src/index.js'),
   //输出
@@ -154,6 +155,8 @@ module.exports = {
     ]
   }
 }
+
+
 ```
 
 `安装相应的loader, url-loader 依赖 file-loader`
@@ -165,7 +168,8 @@ npm i style-loader url-loader file-loader
 ```json
 //调用项目下的webpack， 如果不设置，运行webpack命令会调用全局环境的webpack
 "scripts": {
-  "build": "webpack --config webpack.config.js"
+  "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+  "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
 }
 ```
 
@@ -177,3 +181,15 @@ webpack 帮我们 生成一个dist目录，里面生成 bundle.js，前端项目
 
 webpack 配置中需要添加 Vue Loader 的插件
 参考 https://vue-loader.vuejs.org/zh/guide/#vue-cli
+
+## webpack-dev-server cross-env 
+webpack-dev-server 是一个webpack的包
+cross-env 在不同的环境上设置不同的环境变量不一样，cross-env解决了这个问题
+`安装`
+
+```sh
+npm install webpack-dev-server
+npm install cross-env
+```
+
+## html-webpack-plugin

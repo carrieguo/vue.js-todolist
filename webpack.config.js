@@ -1,7 +1,10 @@
 const path = require('path');
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const HTMLPlugin = require('html-webpack-plugin');
+const isDev = process.env.NODE_ENV === 'development';
+const webpack = require('webpack');
 
-module.exports = {
+const config = {
   //入口， __dirname 是当前文件所在目录
   entry: path.join(__dirname, 'src/index.js'),
   //输出
@@ -51,6 +54,21 @@ module.exports = {
   },
   plugins: [
     // 请确保引入这个插件！
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new HTMLPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
+
+if(isDev) {
+  config.devServer = {
+    port: '8000',
+    host: '0.0.0.0',
+    overlay: {
+      errors: true
+    },
+    hot: true
+  }
+}
+
+module.exports = config;
