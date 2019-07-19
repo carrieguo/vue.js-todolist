@@ -13,5 +13,5 @@ new Vue({
 }).$mount(root)
 
 if (module.hot) {
-  console.log('hot....');
+  console.log('hot..ddd..');
 }

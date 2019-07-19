@@ -56,14 +56,12 @@ const config = {
     // 请确保引入这个插件！
     new VueLoaderPlugin(),
     new HTMLPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    //new webpack.HotModuleReplacementPlugin()
   ]
 }
 
 if(isDev) {
   config.devServer = {
-    port: '8000',
-    host: '0.0.0.0',
     overlay: {
       errors: true
     },
