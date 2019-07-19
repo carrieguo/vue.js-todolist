@@ -193,3 +193,16 @@ npm install cross-env
 ```
 
 ## html-webpack-plugin
+
+
+## vue2
+
+`数据绑定框架`    将js数据绑定到html中
+`vue文件开发方式`   vue是一个组件化的框架。react有jsx,它很好的处理了在JavaScript中去书写HTML，html是通过render方法动态生成的，每次数据变化都回去执行render方法。vue对jsx支持不好，所以自创了这种.vue文件，直观，方便
+`render方法`  组件中有数据变化，都会重新执行render方法，产生新的HTML，并更新。
+.vue 文件中的<template>转化成js中的render方法，render方法中的createElement()方法会一层层的遍历template中的标签，属性，值，以这样的方式创建一个个的节点，最终得到组件树。
+
+## API重点
+生命周期方法
+computed 是对reactive的深度使用。 vue是一个reactive的框架，reactive是指声明好的一些数据一旦去改动，会影响到依赖于这些数据的地方，比如template中依赖于data里的数据。
+computed是指我们在一个组件中声明了一个对象个体具有姓和名两个属性，输出内容为姓名，我们不想在template中做字符串拼接，我们可以声明computed方法，return 姓+名，一旦用户输入姓或者名，computed会重新进行计算，得到一个新的值，我们的template里面只需要直接调用这个值就可以了，不用去执行方法。
