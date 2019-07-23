@@ -198,11 +198,60 @@ npm install cross-env
 ## vue2
 
 `数据绑定框架`    将js数据绑定到html中
-`vue文件开发方式`   vue是一个组件化的框架。react有jsx,它很好的处理了在JavaScript中去书写HTML，html是通过render方法动态生成的，每次数据变化都回去执行render方法。vue对jsx支持不好，所以自创了这种.vue文件，直观，方便
-`render方法`  组件中有数据变化，都会重新执行render方法，产生新的HTML，并更新。
-.vue 文件中的<template>转化成js中的render方法，render方法中的createElement()方法会一层层的遍历template中的标签，属性，值，以这样的方式创建一个个的节点，最终得到组件树。
 
-## API重点
+`vue文件开发方式`   vue是一个组件化的框架。react有jsx,它很好的处理了在JavaScript中去书写HTML，html是通过render方法动态生成的，每次数据变化都回去执行render方法。vue对jsx支持不好，所以自创了这种.vue文件，直观，方便
+
+`render方法`  组件中有数据变化，都会重新执行render方法，产生新的HTML，并更新。
+.vue 文件中的`<template>`转化成js中的render方法，render方法中的`createElement()`方法会一层层的遍历template中的标签，属性，值，以这样的方式创建一个个的节点，最终得到组件树。
+
+## VUE2 API重点
 生命周期方法
 computed 是对reactive的深度使用。 vue是一个reactive的框架，reactive是指声明好的一些数据一旦去改动，会影响到依赖于这些数据的地方，比如template中依赖于data里的数据。
 computed是指我们在一个组件中声明了一个对象个体具有姓和名两个属性，输出内容为姓名，我们不想在template中做字符串拼接，我们可以声明computed方法，return 姓+名，一旦用户输入姓或者名，computed会重新进行计算，得到一个新的值，我们的template里面只需要直接调用这个值就可以了，不用去执行方法。
+
+## 配置VUE的jsx写法以及postcss
+```sh
+npm i post-css-loader autoprefixer babel-loader babel-loader 
+```
+有些依赖需要自己装
+
+根目录下新建 .babelrc 和 postcss.config.js
+
+## Babel Plugin 和 Babel Preset
+
+Babel插件一般尽可能拆成小的力度，开发者可以按需引进。比如对ES6转ES5的功能，Babel官方拆成了20+个插件。
+
+这样的好处显而易见，既提高了性能，也提高了扩展性。比如开发者想要体验ES6的箭头函数特性，那他只需要引入transform-es2015-arrow-functions插件就可以，而不是加载ES6全家桶。
+
+但很多时候，逐个插件引入的效率比较低下。比如在项目开发中，开发者想要将所有ES6的代码转成ES5，插件逐个引入的方式令人抓狂，不单费力，而且容易出错。
+
+这个时候，可以采用Babel Preset。
+
+可以简单的把Babel Preset视为Babel Plugin的集合。比如babel-preset-es2015就包含了所有跟ES6转换有关的插件。
+
+可以同时使用多个Plugin和Preset，此时，它们的执行顺序非常重要。
+
+先执行完所有Plugin，再执行Preset。
+
+多个Plugin，按照声明次序顺序执行。
+
+多个Preset，按照声明次序逆序执行。
+
+比如.babelrc配置如下，那么执行的顺序为：
+
+Plugin：transform-react-jsx、transform-async-to-generator
+
+Preset：es2016、es2015
+
+```js
+{
+  "plugins": [ 
+    "transform-react-jsx",
+    "transform-async-to-generator"
+  ],
+  "presets": [ 
+    "es2015",
+    "es2016"    
+  ]
+}
+```

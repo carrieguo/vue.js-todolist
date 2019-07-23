@@ -19,6 +19,10 @@ const config = {
         test: /\.vue$/,
         loader: 'vue-loader'
       },
+      {
+        test: /\.jsx$/,
+        loader: 'babel-loader'
+      },
       //将css写入到HTML，或者写入到css文件里
       {
         test: /\.css$/,
@@ -34,6 +38,10 @@ const config = {
         use: [
           'vue-style-loader',
           'css-loader',
+          { 
+            loader: 'postcss-loader', 
+            options: { sourceMap: true } 
+          },
           'stylus-loader'
         ]
       },
