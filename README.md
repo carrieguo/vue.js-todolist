@@ -255,3 +255,6 @@ Preset：es2016、es2015
   ]
 }
 ```
+
+footer 使用了jsx, jsx在JS中写HTML，可以进行任意js计算，更开放。
+vue结构更清晰。
