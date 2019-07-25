@@ -6,7 +6,7 @@
                 {{state}}
             </span>
         </span>
-        <span class="clear" @click="clearAllComplated()">Clear Completed</span>
+        <span class="clear" @click="clearAllCompleted()">Clear Completed</span>
     </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
         }
     },
     methods: {
-        clearAllComplated() {},
+        clearAllCompleted() {},
         toggleFilter() {}
     }
 }

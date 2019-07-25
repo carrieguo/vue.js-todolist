@@ -1,9 +1,9 @@
 <template>
-    <div :class="['todo-item', todo.complated? 'complated': '']">
+    <div :class="['todo-item', todo.completed? 'completed': '']">
         <input 
             type="checkbox"
             class="toggle" 
-            v-model="todo.complated"
+            v-model="todo.completed"
             name="" id=""
         >
         <label for="">{{todo.content}}</label>

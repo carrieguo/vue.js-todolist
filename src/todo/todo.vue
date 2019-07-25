@@ -23,7 +23,7 @@ export default {
             todo: {
                 id: 0,
                 content: 'this is to do',
-                complated: false
+                completed: false
             },
             filter: 'all'
         }
