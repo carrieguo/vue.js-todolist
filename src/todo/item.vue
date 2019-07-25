@@ -4,10 +4,9 @@
             type="checkbox"
             class="toggle" 
             v-model="todo.completed"
-            name="" id=""
         >
         <label for="">{{todo.content}}</label>
-        <button class="destory" @click="deleteTodo"></button>
+        <button class="destory" @click="deleteTodo()"></button>
     </div>
 </template>
 
@@ -20,7 +19,9 @@ export default {
         }
     },
     methods: {
-        deleteTodo() {}
+        deleteTodo() {
+            this.$emit('del', this.todo.id);
+        }
     }
 }
 </script>
