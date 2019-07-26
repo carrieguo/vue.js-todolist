@@ -8,18 +8,24 @@
             @keyup.enter="addTodo"
         >
         <Item  
-            v-for="todo in todos"
+            v-for="todo in filterTodos"
             :todo="todo"
             :key="todo.id"
             @del="deleteTodo"
         />
-        <Tabs :filter="filter"></Tabs>
+        <Tabs 
+            :filter="filter" 
+            :todos="todos"
+            @toggle="toggleFilter"
+            @clearAll="clearAllCompletedTodo"
+        />
     </section>
 </template>
 
 <script>
 import Item from './item.vue';
 import Tabs from './tabs.vue';
+import { constants } from 'crypto';
 
 let id = 0;
 
@@ -34,6 +40,15 @@ export default {
         Item,
         Tabs
     },
+    computed: {
+        filterTodos() {
+            if(this.filter === 'all') {
+                return this.todos;
+            }
+            const filterCompleted = this.filter === 'completed';
+            return this.todos.filter(todo=> todo.completed===filterCompleted);
+        }
+    },
     methods: {
         addTodo(e) {
             this.todos.unshift({
@@ -46,6 +61,13 @@ export default {
         },
         deleteTodo(id) {
             this.todos.splice(this.todos.findIndex(todo => id === todo.id), 1);
+        },
+        toggleFilter(state) {
+            console.log(state);
+            this.filter = state;
+        },
+        clearAllCompletedTodo() {
+            this.todos = this.todos.filter(todo=> todo.completed===false);
         }
     }
 }
