@@ -1,3 +1,30 @@
+## 关于项目
+
+这是一个为了学习vue和webpack实现的一个todo-list demo。
+将项目克隆到本地之后，可通过以下三种方式下载项目依赖的包
+1. 通过npm 命令，但是由于国内网速限制，很容易失败(在国外或者有VPN的同学可以使用)
+```sh
+npm install
+```
+2. 通过cnpm命令, 需要安装淘宝镜像 http://npm.taobao.org/ 
+```sh
+cnpm install
+```
+3. yarn (推荐使用yarn,需要先安装yarn https://yarnpkg.com/lang/zh-hans/docs/install/#windows-stable)
+```sh
+yarn
+```
+
+运行命令
+```sh
+npm run dev
+```
+
+如果遇到问题，欢迎给我留言。
+
+
+以下是我的学习笔记，欢迎大家参考：
+
 # vue
 
 vue相对于react，使用起来会更简单，因为vuex, vue router都是官方在维护，比react第三方维护要好很多。
@@ -21,11 +48,14 @@ vscode 打开命令行 ctrl+`
 
 `目录结构`
 ```
-vue project
+vue todo project
 │   README.md
 │   package.json
 |   package-lock.json   
 |   webpack.config.json 
+|   yarn.lock
+|   .babelrc
+|   .gitignore
 │
 └───dist
 │     bundle.js
@@ -45,6 +75,12 @@ vue project
         └───styles
         |       a.css
         |       style.styl
+        └────todo
+                footer.jsx
+                header.vue
+                item.vue
+                tabs.vue
+                todo.vue
 ```
 
 `初始化项目`
