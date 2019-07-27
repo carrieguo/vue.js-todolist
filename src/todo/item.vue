@@ -6,7 +6,7 @@
             v-model="todo.completed"
         >
         <label for="">{{todo.content}}</label>
-        <button class="destory" @click="deleteTodo()"></button>
+        <button class="destory" @click="deleteTodo"></button>
     </div>
 </template>
 

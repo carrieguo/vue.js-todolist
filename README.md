@@ -1,3 +1,30 @@
+## 关于项目
+
+这是一个为了学习vue和webpack实现的一个todo-list demo。
+将项目克隆到本地之后，可通过以下三种方式下载项目依赖的包
+1. 通过npm 命令，但是由于国内网速限制，很容易失败(在国外或者有VPN的同学可以使用)
+```sh
+npm install
+```
+2. 通过cnpm命令, 需要安装淘宝镜像 http://npm.taobao.org/ 
+```sh
+cnpm install
+```
+3. yarn (推荐使用yarn,需要先安装yarn https://yarnpkg.com/lang/zh-hans/docs/install/#windows-stable)
+```sh
+yarn
+```
+
+运行命令
+```sh
+npm run dev
+```
+
+如果遇到问题，欢迎给我留言。
+
+
+以下是我的学习笔记，欢迎大家参考：
+
 # vue
 
 vue相对于react，使用起来会更简单，因为vuex, vue router都是官方在维护，比react第三方维护要好很多。
@@ -21,11 +48,14 @@ vscode 打开命令行 ctrl+`
 
 ### 目录结构
 ```
-vue project
+vue todo project
 │   README.md
 │   package.json
 |   package-lock.json   
 |   webpack.config.json 
+|   yarn.lock
+|   .babelrc
+|   .gitignore
 │
 └───dist
 │     bundle.js
@@ -45,6 +75,12 @@ vue project
         └───styles
         |       a.css
         |       style.styl
+        └────todo
+                footer.jsx
+                header.vue
+                item.vue
+                tabs.vue
+                todo.vue
 ```
 
 ### 初始化项目
@@ -265,4 +301,8 @@ vue结构更清晰。
 
 ### 父子组件的数据交互
 
-父组件通过props传给子组件，子组件通过触发事件的方式告诉父组件，要进行什么操作。在vue里有很多方法，我们可以在props声明一个方法，然后父组件通过props把对应的delete方法传给子组件，然后子组件触发delete事件，调用父组件的delete方法。另外一种现在更流行的方法就是，this.$emit,父组件会监听所有子组件触发的事件，一旦触发这个事件，父组件就可以通过`@del`做相应的操作。在vue中，组件内实现的任何事件触发的一个操作，在父组件内都能通过`@(v-on)`方式监听，实现了父子组件的解耦
+父组件通过props传给子组件，子组件通过触发事件的方式告诉父组件，要进行什么操作。在vue里有很多方法，我们可以在props声明一个方法，然后父组件通过props把对应的delete方法传给子组件，然后子组件触发delete事件，调用父组件的delete方法。另外一种现在更流行的方法就是，`this.$emit`,父组件会监听所有子组件触发的事件，一旦触发这个事件，父组件就可以通过`@del`做相应的操作。在vue中，组件内实现的任何事件触发的一个操作，在父组件内都能通过`@(v-on)`方式监听，实现了父子组件的解耦
+
+### 数据
+
+尽量把所有的数据操作放到顶层，数据在哪里声明，就在哪里操作，不要在子组件操作父组件的数据。
