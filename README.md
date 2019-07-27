@@ -19,7 +19,7 @@ vue相对于react，使用起来会更简单，因为vuex, vue router都是官�
 webpack 用于打包前端资源, 前端资源有很多不同的类型 js, css, img, font 通过http请求加载，开发webapp时都是一整个js加载到浏览器端之后再把所有的内容渲染出来，很多时候都可以以js文件作为入口
 vscode 打开命令行 ctrl+`
 
-`目录结构`
+### 目录结构
 ```
 vue project
 │   README.md
@@ -47,11 +47,11 @@ vue project
         |       style.styl
 ```
 
-`初始化项目`
+### 初始化项目
 ```sh
 npm init 
 ```
-`安装依赖包`
+### 安装依赖包
 ```sh
 npm install webpack vue vue-loader
 ```
@@ -60,7 +60,7 @@ npm install webpack vue vue-loader
 npm install css-loader vue-template-compiler
 ```
 
-`app.vue`
+### `app.vue`
 ```js
 //.vue文件是vue的开发方式，位于根目录src文件夹下
 //vue要显示出来的模板
@@ -86,7 +86,7 @@ npm install css-loader vue-template-compiler
 </style>
 ```
 
-`index.js 入口文件` 
+### `index.js 入口文件` 
 ```js
 import Vue from 'vue';
 import App from './app.vue';
@@ -102,7 +102,7 @@ new Vue({
 }).$mount(root)
 ```
 
-`webpack.config.js`
+### `webpack.config.js`
 ```js
 const path = require('path');
 
@@ -159,12 +159,12 @@ module.exports = {
 
 ```
 
-`安装相应的loader, url-loader 依赖 file-loader`
+### `安装相应的loader, url-loader 依赖 file-loader`
 ```sh 
 npm i style-loader url-loader file-loader
 ```
 
-`package.json`
+### `package.json`
 ```json
 //调用项目下的webpack， 如果不设置，运行webpack命令会调用全局环境的webpack
 "scripts": {
@@ -217,7 +217,7 @@ npm i post-css-loader autoprefixer babel-loader babel-loader
 
 根目录下新建 .babelrc 和 postcss.config.js
 
-## Babel Plugin 和 Babel Preset
+## 关于 Babel Plugin 和 Babel Preset
 
 Babel插件一般尽可能拆成小的力度，开发者可以按需引进。比如对ES6转ES5的功能，Babel官方拆成了20+个插件。
 
