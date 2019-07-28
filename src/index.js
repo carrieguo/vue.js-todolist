@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './app.vue';
 
-import './assets/styles/test.css';
+//import './assets/styles/test.css';
 import './assets/styles/style.styl'
 import './assets/styles/global.styl';
 
