@@ -173,7 +173,7 @@ body {
   height: 100%;
 }
 body {
-  background-image: url(../assets/img/beijing.jpg);
+  background-image: url(./assets/img/beijing.jpg);
   background-size: cover;
   background-position: center;
   font: 14px 'microsoft yahei';
