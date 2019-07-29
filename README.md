@@ -324,3 +324,20 @@ npm install --save-dev mini-css-extract-plugin
 `mini-css-extract-plugin` [链接](https://github.com/webpack-contrib/mini-css-extract-plugin)
 
 从4.0版本开始CommonsChunkPlugin被移除且被optimization.splitChunks和optimization.runtimeChunk配置项代替.
+
+## 总结
+
+构建工具 `webpack` 现在的前端开发基本上很多框架都会配合webpack一起使用
+
+> * `vue` 的 `vue-loader` 适用 `.vue`文件的开发模式
+> * `vue` 和 `react` 的 `babel-loader` 适用 `jsx`语法
+> * 处理静态资源，加`hash`后缀，提供浏览器长缓存，合理更新浏览器缓存
+> * 文件打包，合并，压缩
+> * 强大的loader体系和plugin体系
+
+vue 开发已经离不开webpack,前端开发不仅仅是业务开发,学习vue不仅仅是api,要学习整个vue生态环境， vue-router, vuex, 组件开发，webpack配置。
+
+`vue`渲染过程，通过`jsx`可以更好的了解vue的渲染过程。每次调用`render()`方法，才能得到真正想要的结果。`.vue`文件的template部分最终是用`vue-loader`解析成`render()`方法，然后放到对象中，每次vue里面有数据更新时，都会重新去调用`render()`方法，生成新的HTML结构，插入到DOM结构中。
+
+github 中搜关键词
+`start-kit`, `best-practice` 可以搜到很多围绕一个框架搭建完整的工程
